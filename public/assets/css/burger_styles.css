@@ -42,8 +42,10 @@ textarea {
   text-align-last: center;
 }
 
-.page-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+@media screen and (max-width: 480px) {
+  .page-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
 }
