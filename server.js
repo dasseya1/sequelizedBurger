@@ -12,7 +12,7 @@ app.use(express.static(process.cwd() + "/public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Override with POST having ?_method=DELETE
-// app.use(methodOverride("_method"));
+app.use(methodOverride("_method"));
 
 //Select and set Handlebars as the engine and "main" as the default layout
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
