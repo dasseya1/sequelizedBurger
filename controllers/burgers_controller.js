@@ -4,11 +4,8 @@ var db = require('../models');
 
 //Grabs all the data from the burgers table...all of the burgers! These are sorted later with Handlebars #if and #unless statements
 router.get("/", function(req, res) {
-
   db.Burger.findAll({}).then(function(data) {
-    // Display last 15 items
-    const dataToDisplay = data.slice(Math.max(data.length - 15, 1));
-    res.render("index", {burgers: dataToDisplay});
+    res.render("index", {burgers: data});
   })
 });
 
@@ -27,6 +24,15 @@ router.put("/:id", function(req, res) {
     where: {
       id: req.params.id
     }
+  }).then(function() {
+    res.redirect("/");
+  });
+});
+
+router.delete("/delete-items", function(req, res) {
+  db.Burger.destroy({
+    where: {},
+    truncate: true
   }).then(function() {
     res.redirect("/");
   });
