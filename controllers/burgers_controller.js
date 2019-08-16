@@ -6,7 +6,9 @@ var db = require('../models');
 router.get("/", function(req, res) {
 
   db.Burger.findAll({}).then(function(data) {
-    res.render("index", {burgers: data});
+    // Display last 15 items
+    const dataToDisplay = data.slice(Math.max(data.length - 15, 1));
+    res.render("index", {burgers: dataToDisplay});
   })
 });
 
